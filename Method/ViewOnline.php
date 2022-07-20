@@ -18,7 +18,7 @@ final class ViewOnline extends MethodQueryList
 {
     public function gdoTable() { return GDO_User::table(); }
     
-    public function getDefaultOrder() { return 'user_last_activity DESC'; }
+    public function getDefaultOrder() : ?string { return 'user_last_activity DESC'; }
     
     public function getQuery()
     {
