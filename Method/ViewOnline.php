@@ -4,6 +4,7 @@ namespace GDO\OnlineUsers\Method;
 use GDO\Table\MethodQueryList;
 use GDO\User\GDO_User;
 use GDO\Core\Application;
+use GDO\Core\GDO;
 use GDO\OnlineUsers\Module_OnlineUsers;
 use GDO\Date\Time;
 
@@ -16,7 +17,7 @@ use GDO\Date\Time;
  */
 final class ViewOnline extends MethodQueryList
 {
-    public function gdoTable() { return GDO_User::table(); }
+    public function gdoTable() : GDO { return GDO_User::table(); }
     
     public function getDefaultOrder() : ?string { return 'user_last_activity DESC'; }
     

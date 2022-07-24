@@ -13,7 +13,7 @@ use GDO\Date\Time;
  * Display currently online in View.
  * 
  * @author gizmore
- * @version 6.10.3
+ * @version 7.0.1
  * @since 3.0.1
  */
 final class Module_OnlineUsers extends GDO_Module
@@ -25,11 +25,11 @@ final class Module_OnlineUsers extends GDO_Module
     {
         return [
         	GDT_Duration::make('online_timeout')->initial('300'),
-            GDT_Checkbox::make('show_in_top_bar')->initial('1'),
+            GDT_Checkbox::make('hook_sidebar')->initial('1'),
         ];
     }
     public function cfgOnlineTime() { return $this->getConfigValue('online_timeout'); }
-    public function cfgShowInTopBar() { return $this->getConfigValue('show_in_top_bar'); }
+    public function cfgShowInTopBar() { return $this->getConfigValue('hook_sidebar'); }
     
     public function onlineTimeoutCut() { return Application::$TIME - $this->cfgOnlineTime(); }
     public function onlineDateCut() { return Time::getDate($this->onlineTimeoutCut()); }
@@ -46,7 +46,7 @@ final class Module_OnlineUsers extends GDO_Module
     {
         if ($this->cfgShowInTopBar())
         {
-            GDT_Page::$INSTANCE->topNav->addField(
+            GDT_Page::instance()->topBar()->addField(
                 GDT_OnlineUsers::make());
         }
     }
