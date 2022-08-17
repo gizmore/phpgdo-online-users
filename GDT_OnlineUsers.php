@@ -27,7 +27,7 @@ final class GDT_OnlineUsers extends GDT_Link
         if ($cache === null)
         {
             $key = "gdt_onlineusers";
-            if (false === ($cache = Cache::get($key)))
+            if (null === ($cache = Cache::get($key)))
             {
                 $cache = self::countOnline();
                 Cache::set($key, $cache, 10);
