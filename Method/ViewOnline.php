@@ -6,6 +6,7 @@ use GDO\User\GDO_User;
 use GDO\Core\GDO;
 use GDO\DB\Query;
 use GDO\OnlineUsers\Module_OnlineUsers;
+use GDO\User\GDO_UserSetting;
 
 /**
  * View recently active users.
@@ -23,9 +24,7 @@ final class ViewOnline extends MethodQueryList
     public function getQuery() : Query
     {
         $cut = Module_OnlineUsers::instance()->onlineDateCut();
-        return GDO_User::table()->select()->
-            where("user_last_activity >= '$cut'")->
-            where('user_type IN ("member", "guest")');
+        return GDO_UserSetting::usersWithQuery('User', 'last_activity', $cut, '>');
     }
     
 }
