@@ -24,7 +24,7 @@ final class Module_OnlineUsers extends GDO_Module
     public function getConfig() : array
     {
         return [
-        	GDT_Duration::make('online_timeout')->initial('300'),
+        	GDT_Duration::make('online_timeout')->initial('10m'),
             GDT_Checkbox::make('hook_sidebar')->initial('1'),
         ];
     }
