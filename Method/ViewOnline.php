@@ -11,7 +11,7 @@ use GDO\User\GDO_UserSetting;
 /**
  * View recently active users.
  * 
- * @version 7.0.1
+ * @version 7.0.2
  * @since 6.7.0
  * @author gizmore
  */
@@ -19,7 +19,12 @@ final class ViewOnline extends MethodQueryList
 {
     public function gdoTable() : GDO { return GDO_User::table(); }
     
-    public function getDefaultOrder() : ?string { return 'user_last_activity DESC'; }
+    public function getDefaultOrder() : ?string { return 'last_activity DESC'; }
+    
+    public function getExtraFieldNames(): array
+    {
+    	return ['last_activity'];
+    }
     
     public function getQuery() : Query
     {
