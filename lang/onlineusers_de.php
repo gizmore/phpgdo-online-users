@@ -1,5 +1,6 @@
 <?php
 namespace GDO\OnlineUsers\lang;
+
 return [
 	'list_onlineusers_viewonline' => '%s online',
 	'online_subtitle' => 'Registriert seit %s (vor %s) - Level %s',
