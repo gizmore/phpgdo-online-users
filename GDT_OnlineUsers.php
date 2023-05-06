@@ -44,7 +44,7 @@ final class GDT_OnlineUsers extends GDT_Link
 		{
 			$online = ViewOnline::make()->getQuery()->
 			selectOnly('COUNT(*)')->first()->
-			exec()->fetchValue();
+			exec()->fetchVar();
 
 			if (GDO_Session::isDB())
 			{
